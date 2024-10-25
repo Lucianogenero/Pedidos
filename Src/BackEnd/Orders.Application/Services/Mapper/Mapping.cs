@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Orders.Comunication.Request;
+using Orders.Comunication.Response;
 
 namespace Orders.Application.Services.Mapper
 {
@@ -8,14 +9,26 @@ namespace Orders.Application.Services.Mapper
         public Mapping()
         {
             RequestToDomain();
+            DomainToResponse();
         }
 
         private void RequestToDomain()
         {
-            CreateMap<RequestAddNewOrderJson, Domain.Entities.Order>()
-                      .ForMember(ord => ord.Id, opt => opt.Ignore())
-                      .ForMember(ord => ord.IsFinished, opt => opt.Ignore())
-                      .ForMember(ord => ord.CreatedOn, opt => opt.Ignore());
+            CreateMap<RequestOrderJson, Domain.Entities.Order>()
+                      .ForMember(dest => dest.Id, opt => opt.Ignore())
+                      //.ForMember(dest => dest.IsFinished, opt => opt.Ignore())
+                      .ForMember(dest => dest.Itens, opt => opt.MapFrom(it => it.Itens.Distinct()));
+
+            CreateMap<RequestItensJson, Domain.Entities.Item>()
+                      .ForMember(dest => dest.Id, opt => opt.Ignore())
+                      //.ForMember(dest => dest.CreatedOn, opt => opt.Ignore())
+                      .ForMember(dest => dest.OrderId, opt => opt.Ignore());
+
+        }
+
+        private void DomainToResponse()
+        {
+            CreateMap<Domain.Entities.Order, ResposeAddedNewOrderJson>();            
         }
     }
 

@@ -3,16 +3,16 @@ using Orders.Domain.Entities;
 
 namespace Orders.Infra.DataAccess
 {
-    public class OrderDbContext : DbContext
+    public class OrDbContext : DbContext
     {
-        public OrderDbContext(DbContextOptions option): base(option) {}
+        public OrDbContext(DbContextOptions option): base(option) {}
 
-        DbSet<Order> Orders {  get; set; }
-        DbSet<Item> Itens {  get; set; }
+        public DbSet<Order> Order {  get; set; }
+       //public DbSet<Item> Itens {  get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(Orders.Infra.DataAccess.OrderDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrDbContext).Assembly);
         }
 
     }

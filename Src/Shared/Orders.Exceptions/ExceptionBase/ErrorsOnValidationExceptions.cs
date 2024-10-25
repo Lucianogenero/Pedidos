@@ -1,9 +1,17 @@
-﻿namespace Orders.Exceptions.ExceptionBase
+﻿using System.Net;
+
+namespace Orders.Exceptions.ExceptionBase
 {
     public class ErrorsOnValidationExceptions : OrderExceptions
     {
-        public List<string> ErrorsMessages { get; set; }
+        private IList<string> _errorMessages { get; set; }
 
-        public ErrorsOnValidationExceptions(List<string> errorsMessages) => ErrorsMessages = errorsMessages;
+        public ErrorsOnValidationExceptions(IList<string> errorsMessages) : base(string.Empty)
+        {
+            _errorMessages = errorsMessages;
+        }
+        public override IList<string> GetErrorMessages() => _errorMessages;
+        public override HttpStatusCode GetStatusCode() => HttpStatusCode.BadRequest;
+
     }
 }

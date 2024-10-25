@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Orders.Comunication\Orders.Comunication.csproj" />
+    <ProjectReference Include="..\..\Shared\Orders.Exceptions\Orders.Exceptions.csproj" />
     <ProjectReference Include="..\Orders.Domain\Orders.Domain.csproj" />
   </ItemGroup>
 

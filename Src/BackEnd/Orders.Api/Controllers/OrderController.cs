@@ -2,7 +2,6 @@
 using Orders.Application.UseCases.AddNewOrder;
 using Orders.Comunication.Request;
 using Orders.Comunication.Response;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Orders.Api.Controllers
 {
@@ -12,7 +11,7 @@ namespace Orders.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResposeAddedNewOrderJson),StatusCodes.Status201Created)]
-        public IActionResult NewOrder([FromServices] INewOrder order, [FromBody]RequestAddNewOrderJson request)
+        public IActionResult NewOrder([FromServices] INewOrder order, [FromBody]RequestOrderJson request)
         {
             var result = order.Execute(request);
 

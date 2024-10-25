@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C7475E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Comunication", "Src\Shared\Orders.Comunication\Orders.Comunication.csproj", "{5337187D-1B8B-40B4-8195-FA8362D7F531}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Exceptions", "Src\Shared\Orders.Exceptions\Orders.Exceptions.csproj", "{706A6243-3871-4453-9546-270CF8AB5FE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{5337187D-1B8B-40B4-8195-FA8362D7F531}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5337187D-1B8B-40B4-8195-FA8362D7F531}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5337187D-1B8B-40B4-8195-FA8362D7F531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{706A6243-3871-4453-9546-270CF8AB5FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{706A6243-3871-4453-9546-270CF8AB5FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{706A6243-3871-4453-9546-270CF8AB5FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{706A6243-3871-4453-9546-270CF8AB5FE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{D9BBAF6D-7878-4488-85C4-6FE1E14589EA} = {5E5D5005-0454-4C0D-B789-3D5D7DEB20B5}
 		{C7475E29-64C0-44A8-B37C-C30767D1146B} = {B165DB35-5809-452B-B1F2-8C36008966E1}
 		{5337187D-1B8B-40B4-8195-FA8362D7F531} = {C7475E29-64C0-44A8-B37C-C30767D1146B}
+		{706A6243-3871-4453-9546-270CF8AB5FE1} = {C7475E29-64C0-44A8-B37C-C30767D1146B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBEAA5F1-29C7-45EC-8FFB-6ED05B3B9F17}

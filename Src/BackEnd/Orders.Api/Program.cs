@@ -1,6 +1,7 @@
 using Orders.Infra;
 using Orders.Application;
 using Orders.Api.Filters;
+using Orders.Infra.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMvc(op => op.Filters.Add(typeof(ExceptionsFilter)));
 
 //Dependency Injection
-builder.Services.AddInfraStructure();
+builder.Services.AddInfraStructure(builder.Configuration);
 builder.Services.AddApplication();
 
 var app = builder.Build();
@@ -34,4 +35,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+MigrateDatabase();
+
 app.Run();
+
+void MigrateDatabase()
+{
+    //if (builder.Configuration.IsUnitTestEnviroment())        return;
+
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+    var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+    DatabaseMigrartions.Migrate(connectionString, serviceScope.ServiceProvider);
+}

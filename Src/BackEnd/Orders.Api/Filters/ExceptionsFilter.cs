@@ -10,21 +10,16 @@ namespace Orders.Api.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            if (context.Exception is OrderExceptions)
-                HandleProjectException(context);
+            if (context.Exception is OrderExceptions orderException)
+                HandleProjectException(orderException, context);
             else
                 HandleUnknowException(context);
         }
 
-        private void HandleProjectException(ExceptionContext context)
+        private void HandleProjectException(OrderExceptions orderException, ExceptionContext context)
         {
-            if (context.Exception is ErrorsOnValidationExceptions)
-            {
-                var exception = context.Exception as ErrorsOnValidationExceptions;
-
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new BadRequestObjectResult(new ResponseErrorsJson(exception.ErrorsMessages));
-            }
+            context.HttpContext.Response.StatusCode = (int)orderException.GetStatusCode();
+            context.Result = new BadRequestObjectResult(new ResponseErrorsJson(orderException.GetErrorMessages()));
         }
 
         private void HandleUnknowException(ExceptionContext context)
