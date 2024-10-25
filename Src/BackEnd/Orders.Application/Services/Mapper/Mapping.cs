@@ -16,12 +16,12 @@ namespace Orders.Application.Services.Mapper
         {
             CreateMap<RequestOrderJson, Domain.Entities.Order>()
                       .ForMember(dest => dest.Id, opt => opt.Ignore())
-                      //.ForMember(dest => dest.IsFinished, opt => opt.Ignore())
+                      .ForMember(dest => dest.IsFinished, opt => opt.Ignore())
                       .ForMember(dest => dest.Itens, opt => opt.MapFrom(it => it.Itens.Distinct()));
 
             CreateMap<RequestItensJson, Domain.Entities.Item>()
                       .ForMember(dest => dest.Id, opt => opt.Ignore())
-                      //.ForMember(dest => dest.CreatedOn, opt => opt.Ignore())
+                      .ForMember(dest => dest.CreatedOn, opt => opt.Ignore())
                       .ForMember(dest => dest.OrderId, opt => opt.Ignore());
 
         }
